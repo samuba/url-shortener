@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { getHost } from '$lib/host';
+
 	import type { Link, NewLink } from 'src/global';
 	import { onMount } from 'svelte';
 
@@ -13,7 +15,6 @@
 		showLoading(true);
 		const res = await fetch(`/api/links`, {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				url,
 				description: ''
@@ -21,7 +22,7 @@
 		});
 		const linkRes = (await res.json()) as Link;
 		console.log({ res });
-		shortUrl = `${location.protocol}//${window.location.host}/${linkRes.shortUrl}`;
+		shortUrl = `${getHost()}/${linkRes.shortUrl}`;
 		url = '';
 		showLoading(false);
 	}
@@ -32,9 +33,7 @@
 	}
 
 	onMount(async () => {
-		const res = await fetch(`/api/links/list`, {
-			headers: { 'Content-Type': 'application/json' }
-		});
+		const res = await fetch(`/api/links/list`);
 		if (!res.ok) {
 			console.log('list', res);
 			console.log('list.body', res.text());
@@ -53,6 +52,8 @@
 		>test2</button
 	>
 </header>
+
+<a href={getHost() + '/aaa'}>one short link</a>
 
 <form action="" on:submit|preventDefault={shortenUrl}>
 	<label for="url-box">URL</label>

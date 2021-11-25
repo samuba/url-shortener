@@ -1,5 +1,4 @@
 import { listKeys } from '$lib/kv';
-import type { Link } from 'src/global';
 
 export async function get() {
 	try {
