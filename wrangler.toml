@@ -1,0 +1,13 @@
+name = "kurzer"
+type = "esbuild"
+route = ''
+zone_id = ''
+usage_model = ''
+compatibility_flags = []
+workers_dev = true
+compatibility_date = "2021-11-25"
+
+[site]
+bucket = "./.svelte-kit/workers-site-bucket"
+entry-point = "./.svelte-kit/workers-site"
+

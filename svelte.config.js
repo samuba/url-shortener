@@ -1,4 +1,5 @@
 import preprocess from 'svelte-preprocess';
+// import cloudflare from '@sveltejs/adapter-cloudflare-workers';
 import cloudflare from '@sveltejs/adapter-cloudflare';
 
 /** @type {import('@sveltejs/kit').Config} */
