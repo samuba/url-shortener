@@ -4,6 +4,6 @@ export function getHost(): string {
 	if (dev) {
 		return 'http://localhost:3000';
 	} else {
-		return `https://${window.location.host}`;
+		return `https://kurzer.pages.dev`;
 	}
 }

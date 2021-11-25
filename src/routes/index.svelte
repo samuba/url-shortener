@@ -35,7 +35,11 @@
 		const res = await fetch(`/api/links/list`, {
 			headers: { 'Content-Type': 'application/json' }
 		});
-		console.log('list', res);
+		if (!res.ok) {
+			console.log('list', res);
+			console.log('list.body', res.text());
+			return;
+		}
 		allLinks = (await res.json()) as Link[];
 	});
 </script>
