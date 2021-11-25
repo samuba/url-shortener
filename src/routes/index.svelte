@@ -44,7 +44,10 @@
 	});
 </script>
 
-<h1>URL-Shortener</h1>
+<header>
+	<h1>Kurzer</h1>
+	<p>shortens youre urls</p>
+</header>
 
 <form action="" on:submit|preventDefault={shortenUrl}>
 	<label for="url-box">URL</label>
