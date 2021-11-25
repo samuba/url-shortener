@@ -46,7 +46,7 @@
 
 <header>
 	<h1>Kurzer</h1>
-	<p>shortens youre urls</p>
+	<p>shortens your URLs</p>
 </header>
 
 <form action="" on:submit|preventDefault={shortenUrl}>

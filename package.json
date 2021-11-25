@@ -5,6 +5,7 @@
 		"dev": "env-cmd svelte-kit dev",
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
+		"previewCloudflare": "npm run build && env-cmd npx wrangler@beta pages dev .svelte-kit/cloudflare/",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
