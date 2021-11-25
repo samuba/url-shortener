@@ -1,8 +1,8 @@
-import { listKeys } from '$lib/kv';
+import { KV_NAMESPACE } from '$lib/env';
 
 export async function get() {
 	return {
 		status: 200,
-		body: await listKeys()
+		body: KV_NAMESPACE
 	};
 }

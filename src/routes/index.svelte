@@ -49,6 +49,9 @@
 	<p>shortens your URLs</p>
 	<button on:click={() => fetch('/api/links/test').then((x) => console.log('test', x))}>test</button
 	>
+	<button on:click={() => fetch('/api/links/test2').then((x) => console.log('test', x))}
+		>test2</button
+	>
 </header>
 
 <form action="" on:submit|preventDefault={shortenUrl}>
