@@ -14,6 +14,8 @@ declare global {
 	const myKVNamespace: KVNamespace;
 }
 
-export const cfAccount = loadFromNodeEnv('CF_ACCOUNT') ?? CF_ACCOUNT;
-export const cfToken = loadFromNodeEnv('CF_TOKEN') ?? CF_TOKEN;
-export const kvNamespace = loadFromNodeEnv('KV_NAMESPACE') ?? KV_NAMESPACE;
+// this is a hack and should be removed as soon as this is fixed: https://github.com/sveltejs/kit/issues/2606
+// see injectEnvs.js
+export const cfAccount = loadFromNodeEnv('CF_ACCOUNT') ?? '#CF_ACCOUNT#';
+export const cfToken = loadFromNodeEnv('CF_TOKEN') ?? '#CF_TOKEN#';
+export const kvNamespace = loadFromNodeEnv('KV_NAMESPACE') ?? '#KV_NAMESPACE#';
