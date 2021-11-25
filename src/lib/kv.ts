@@ -31,8 +31,6 @@ export async function readKey(key: string) {
 }
 
 export async function listKeys() {
-	return { kv: kvUrl };
-	console.log({ CF_ACCOUNT_ID: cfAccount });
 	const res = await fetch(`${kvUrl}/keys`, {
 		method: 'GET',
 		mode: 'no-cors',
