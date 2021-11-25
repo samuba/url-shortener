@@ -47,5 +47,5 @@ export async function listKeys() {
 	}
 	const result = await res.json();
 	console.log({ result: result });
-	return res;
+	return result;
 }
