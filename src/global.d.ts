@@ -18,6 +18,7 @@ export {};
 
 declare global {
 	const KV_NAMESPACE: string;
-	const MY_SECRET: string;
+	const CF_ACCOUNT: string;
+	const CF_TOKEN: string;
 	const myKVNamespace: KVNamespace;
 }

@@ -1,7 +1,7 @@
-import { KV_NAMESPACE, CF_ACCOUNT_ID, CF_TOKEN } from './env';
+import { kvNamespace, cfAccount, cfToken } from './env';
 
-const kvUrl = `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/storage/kv/namespaces/${KV_NAMESPACE}`;
-const headers = { Authorization: `Bearer ${CF_TOKEN}` };
+const kvUrl = `https://api.cloudflare.com/client/v4/accounts/${cfAccount}/storage/kv/namespaces/${kvNamespace}`;
+const headers = { Authorization: `Bearer ${cfToken}` };
 
 export async function writeKey(key: string, obj: Record<string, any>) {
 	const result = await fetch(`${kvUrl}/values/${key}`, {
@@ -32,7 +32,7 @@ export async function readKey(key: string) {
 
 export async function listKeys() {
 	return { kv: kvUrl };
-	console.log({ CF_ACCOUNT_ID });
+	console.log({ CF_ACCOUNT_ID: cfAccount });
 	const res = await fetch(`${kvUrl}/keys`, {
 		method: 'GET',
 		mode: 'no-cors',
