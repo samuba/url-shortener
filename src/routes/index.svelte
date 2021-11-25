@@ -47,6 +47,8 @@
 <header>
 	<h1>Kurzer</h1>
 	<p>shortens your URLs</p>
+	<button on:click={() => fetch('/api/links/test').then((x) => console.log('test', x))}>test</button
+	>
 </header>
 
 <form action="" on:submit|preventDefault={shortenUrl}>
