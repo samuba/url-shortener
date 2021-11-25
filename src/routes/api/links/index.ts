@@ -46,7 +46,7 @@ export async function post(request) {
 	const shortUrl = id;
 	try {
 		await writeKey(id, {
-			url: body.url,
+			url: body.url.trim(),
 			shortUrl,
 			id,
 			description: body.description,
