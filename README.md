@@ -4,6 +4,6 @@
 
 I mainly built this to try out these technologies:
 
-- Sveltekit
-- css.new (no-css framework)
 - Cloudflare Pages (incl. workers & KV)
+- css.new (no-css framework)
+- Sveltekit
