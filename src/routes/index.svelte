@@ -32,7 +32,7 @@
 		btnDisabled = show;
 	}
 
-	onMount(async () => {
+	async function loadAll() {
 		const res = await fetch(`/api/links/list`);
 		if (!res.ok) {
 			console.log('list', res);
@@ -40,7 +40,7 @@
 			return;
 		}
 		allLinks = (await res.json()) as Link[];
-	});
+	}
 </script>
 
 <header>
@@ -71,6 +71,8 @@
 	<p>Your shortened URL is: <a href={shortUrl}>{shortUrl}</a></p>
 {/if}
 
+<br /><br />
+<button on:click={loadAll}>Load All</button>
 <pre>
 	{JSON.stringify(allLinks, null, 2)}
 </pre>

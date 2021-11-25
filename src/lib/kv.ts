@@ -16,6 +16,7 @@ export async function writeKey(key: string, obj: Record<string, any>) {
 }
 
 export async function readKey(key: string) {
+	console.log(`Reading key ${key}`);
 	const result = await fetch(`${kvUrl}/values/${key}`, {
 		method: 'GET',
 		headers
