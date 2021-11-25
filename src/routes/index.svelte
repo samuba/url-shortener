@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { getHost } from '$lib/host';
-
 	import type { Link, NewLink } from 'src/global';
-	import { onMount } from 'svelte';
 
 	let shortUrl = '';
 	let url = 'https://www.google.com';
@@ -47,14 +45,7 @@
 <header>
 	<h1>Kurzer</h1>
 	<p>shortens your URLs</p>
-	<button on:click={() => fetch('/api/links/test').then((x) => console.log('test', x))}>test</button
-	>
-	<button on:click={() => fetch('/api/links/test2').then((x) => console.log('test', x))}
-		>test2</button
-	>
 </header>
-
-<a href={getHost() + '/aaa'}>one short link</a>
 
 <form action="" on:submit|preventDefault={shortenUrl}>
 	<label for="url-box">URL</label>

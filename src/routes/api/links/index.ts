@@ -50,7 +50,8 @@ export async function post(request) {
 			shortUrl,
 			id,
 			description: body.description,
-			userId: undefined
+			userId: undefined,
+			createdAt: new Date()
 		} as Link);
 	} catch (error) {
 		return { status: 500, body: { error: error.message } };

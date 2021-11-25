@@ -6,6 +6,7 @@ export type Link = {
 	shortUrl: string;
 	description: string;
 	userId: string;
+	createdAt: Date;
 };
 
 export type NewLink = {
