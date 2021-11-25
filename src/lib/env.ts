@@ -1,10 +1,6 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 function loadEnv(envName: string): string {
 	try {
 		return process?.env[envName];
-		// return (import.meta?.env?.[envName] as string) ?? eval(envName);
 	} catch (e) {
 		console.log('process is not defined', e);
 	}
