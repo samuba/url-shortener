@@ -1,8 +1,9 @@
-# url-shortener
+# kurzer
 
-# stack
+[A tiny url shortener](https://kurzer.pages.dev/)
 
-- Cloudflare Workers
-- Cloudflare KV
+I mainly built this to try out these technologies:
+
 - Sveltekit
-- Some no-css framework
+- css.new (no-css framework)
+- Cloudflare Pages (incl. workers & KV)
