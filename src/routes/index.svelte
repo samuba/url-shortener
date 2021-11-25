@@ -63,8 +63,8 @@
 	<p>Your shortened URL is: <a href={shortUrl}>{shortUrl}</a></p>
 {/if}
 
-<br /><br />
+<!-- <br /><br />
 <button on:click={loadAll}>Load All</button>
 <pre>
 	{JSON.stringify(allLinks, null, 2)}
-</pre>
+</pre> -->
