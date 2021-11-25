@@ -13,3 +13,11 @@ export type NewLink = {
 	description: string;
 	userId: string;
 };
+
+export {};
+
+declare global {
+	const KV_NAMESPACE: string;
+	const MY_SECRET: string;
+	const myKVNamespace: KVNamespace;
+}
