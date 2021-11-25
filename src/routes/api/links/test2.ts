@@ -1,6 +1,6 @@
-export async function get() {
+export async function get(req) {
 	return {
 		status: 200,
-		body: KV_NAMESPACE
+		body: JSON.stringify(req, null, 2)
 	};
 }
