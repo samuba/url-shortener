@@ -1,13 +1,9 @@
+import { getLinkId } from '$lib/common';
 import { readKey } from '$lib/kv';
-import type { Link } from 'src/global';
 
 export async function get({ params }) {
-	const shortUrl = params.slug;
-	if (!shortUrl) {
-		return { status: 400, body: { error: 'shortUrl is required' } };
-	}
-
-	const link = await readKey(shortUrl);
+	const linkId = getLinkId(params.slug);
+	const link = await readKey(linkId);
 	if (!link) {
 		return { status: 404, body: { error: 'link not found' } };
 	}
