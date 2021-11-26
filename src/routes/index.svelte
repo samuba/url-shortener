@@ -42,28 +42,25 @@
 	}
 </script>
 
-<center>
-	<header>
-		<h1>🔗 Kurzer</h1>
-		<p>shortens your URLs</p>
-	</header>
+<form action="" on:submit|preventDefault={shortenUrl}>
+	<input
+		bind:value={url}
+		required
+		type="url"
+		placeholder="https://example.com"
+		pattern="http:\/\/.*|https:\/\/.*"
+	/>
+	<input disabled={btnDisabled} type="submit" value={btnLabel} />
+</form>
 
-	<br />
-	<form action="" on:submit|preventDefault={shortenUrl}>
-		<input
-			bind:value={url}
-			required
-			type="url"
-			placeholder="https://example.com"
-			pattern="http:\/\/.*|https:\/\/.*"
-		/>
-		<input disabled={btnDisabled} type="submit" value={btnLabel} />
-	</form>
+<!-- <form action="/created">
+	<input name="url" bind:value={url} required />
+	<input disabled={btnDisabled} type="submit" value="test" />
+</form> -->
 
-	{#if shortUrl}
-		<p>Your shortened URL:<br /> <a href={shortUrl}>{shortUrl}</a></p>
-	{/if}
-</center>
+{#if shortUrl}
+	<p>Your shortened URL:<br /> <a href={shortUrl}>{shortUrl}</a></p>
+{/if}
 
 <!-- <br /><br />
 <button on:click={loadAll}>Load All</button>

@@ -3,12 +3,11 @@ import { readKey } from '$lib/kv';
 import type { Link } from 'src/global';
 
 export async function get({ params }) {
+	console.log('handled by: [slug].ts');
 	try {
 		const linkId = getLinkId(params.slug);
 		const link = (await readKey(linkId)) as Link;
-		if (!link) {
-			return { status: 404, body: { error: 'link not found' } };
-		}
+		if (!link) return { status: 404, body: { error: 'link not found' } };
 
 		return {
 			status: 301,
