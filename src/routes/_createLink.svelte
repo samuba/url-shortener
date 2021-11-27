@@ -15,18 +15,14 @@
 	}
 </script>
 
-<form
-	on:submit|preventDefault={() => {
-		showLoading(true);
-		goto(`/created?url=${url}`);
-	}}
->
+<form action="/created" method="get">
 	<input
 		bind:value={url}
 		required
 		type="url"
 		placeholder="https://example.com"
 		pattern="http:\/\/.*|https:\/\/.*"
+		name="url"
 	/>
 	<input disabled={btnDisabled} type="submit" value={btnLabel} />
 </form>

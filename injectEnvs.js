@@ -2,6 +2,8 @@ import fs from 'fs';
 import https from 'https';
 // this is a hack and should be removed as soon as this is fixed: https://github.com/sveltejs/kit/issues/2606
 
+console.log('inject envs from server...');
+
 https
 	.get('https://kurzer-secrets.szb.workers.dev', (res) => {
 		let body = '';
@@ -9,8 +11,6 @@ https
 		res.on('end', () => {
 			try {
 				let envs = JSON.parse(body);
-				console.log('loaded envs from server...');
-
 				try {
 					let filePath = '.svelte-kit/cloudflare/_worker.js';
 					fs.writeFileSync(
