@@ -32,7 +32,7 @@
 		Your shortened URL:<br />
 		<a href={fqdnShortUrl} target="_blank">{fqdnShortUrl.replace('https://', '')}</a>
 		<button
-			on:click={() => navigator.clipboard.writeText('newClipText')}
+			on:click={() => navigator.clipboard.writeText(fqdnShortUrl)}
 			title="copy to clipboard"
 			style="margin-left: 0.5rem;"
 		>
