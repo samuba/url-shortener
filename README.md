@@ -2,9 +2,13 @@
 
 [A tiny serverless url shortener](https://kurzer.pages.dev/)
 
-I mainly built this to try out these technologies:
+# Goals
 
-- Cloudflare Pages (incl. workers)
-- Cloudflare KV
-- css.new (no-css framework)
-- Sveltekit
+- Simple UX
+- Make it "hard" to abuse by not exposing API
+- Get some hands on with:
+  - Cloudflare Pages
+  - Cloudflare Workers
+  - Cloudflare KV
+  - css.new (no-css framework)
+  - SvelteKit

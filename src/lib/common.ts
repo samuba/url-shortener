@@ -4,3 +4,17 @@ export function randomShortId(): string {
 }
 
 export const getLinkId = (shortId: string): string => `link|${shortId}`;
+
+export const errorResponse = (err: string | Error, status = 400) => {
+	if (typeof err === 'string') {
+		console.error(err);
+		return {
+			status,
+			body: err
+		};
+	}
+	return {
+		status,
+		body: err.message
+	};
+};
