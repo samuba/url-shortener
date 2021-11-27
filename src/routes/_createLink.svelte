@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getHost } from '$lib/host';
+	import IconClipboard from '$lib/IconClipboard.svelte';
 
 	export let shortUrl = '';
 
@@ -27,5 +28,15 @@
 </form>
 
 {#if shortUrl}
-	<p>Your shortened URL:<br /> <a href={fqdnShortUrl} target="_blank">{fqdnShortUrl}</a></p>
+	<p>
+		Your shortened URL:<br />
+		<a href={fqdnShortUrl} target="_blank">{fqdnShortUrl.replace('https://', '')}</a>
+		<button
+			on:click={() => navigator.clipboard.writeText('newClipText')}
+			title="copy to clipboard"
+			style="margin-left: 0.5rem;"
+		>
+			<IconClipboard style="height: 1rem;" color="#fff" />
+		</button>
+	</p>
 {/if}

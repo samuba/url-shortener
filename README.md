@@ -1,6 +1,6 @@
-# kurzer
+# Samu.Bar
 
-[A tiny serverless url shortener](https://kurzer.pages.dev/)
+[A tiny serverless url shortener](https://samu.bar/)
 
 # Goals
 
