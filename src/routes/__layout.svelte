@@ -1,7 +1,11 @@
+<script>
+	import CocktailIcon from '$lib/cocktailIcon.svelte';
+</script>
+
 <center>
 	<header>
-		<h1>🔗 Kurzer</h1>
-		<p>shortens your URLs</p>
+		<h1><CocktailIcon /> Samu.Bar</h1>
+		<p>Short URLs served chilled</p>
 	</header>
 
 	<br />

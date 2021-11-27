@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
 	import { getHost } from '$lib/host';
+	import confetti from 'canvas-confetti';
 	import type { Link } from 'src/global';
 	import { onMount } from 'svelte';
 
@@ -43,6 +44,7 @@
 			if (!location.search.includes('?shortUrl')) {
 				location.search = '?shortUrl=' + shortUrl;
 			}
+			confetti({ colors: ['#3291ff', '#0070f3'] });
 		}
 	});
 </script>
