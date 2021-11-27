@@ -28,5 +28,5 @@
 </form>
 
 {#if shortUrl}
-	<p>Your shortened URL:<br /> <a href={fqdnShortUrl}>{fqdnShortUrl}</a></p>
+	<p>Your shortened URL:<br /> <a href={fqdnShortUrl} target="_blank">{fqdnShortUrl}</a></p>
 {/if}
