@@ -11,7 +11,7 @@
 
 	function showLoading(show: boolean) {
 		btnLabel = show ? 'shortening...' : 'Shorten!';
-		btnDisabled = show;
+		setTimeout(() => (btnDisabled = show), 100); // cuz click of btn would not progate to form
 	}
 </script>
 
@@ -24,7 +24,7 @@
 		pattern="http:\/\/.*|https:\/\/.*"
 		name="url"
 	/>
-	<input disabled={btnDisabled} type="submit" value={btnLabel} />
+	<input on:click={() => showLoading(true)} disabled={btnDisabled} value={btnLabel} type="submit" />
 </form>
 
 {#if shortUrl}
