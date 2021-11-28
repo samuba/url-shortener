@@ -1,6 +1,6 @@
 import fs from 'fs';
 import https from 'https';
-// this is a hack and should be removed as soon as this is fixed: https://github.com/sveltejs/kit/issues/2606
+// this is a hack and should be removed as soon as this is fixed: https://github.com/sveltejs/kit/issues/2844
 
 console.log('inject envs from server...');
 https
