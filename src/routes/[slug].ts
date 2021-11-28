@@ -7,7 +7,11 @@ export async function get({ params }) {
 	try {
 		const linkId = getLinkId(params.slug);
 		const link = (await readKey(linkId)) as Link;
-		if (!link) return errorResponse(`link "${linkId}" not found`, 404);
+		if (!link)
+			return errorResponse(
+				`Link not found. If you just created this link, try again in 3 seconds. Creating the link can sometimes takes a couple of seconds.`,
+				404
+			);
 
 		return {
 			status: 301,
