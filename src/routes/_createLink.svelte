@@ -3,12 +3,13 @@
 	import IconClipboard from '$lib/IconClipboard.svelte';
 
 	export let shortUrl = '';
+	export let url = '';
+	export let customSlug = '';
 
 	$: fqdnShortUrl = `${getHost()}/${shortUrl}`;
-	let url = '';
 	let btnLabel = 'Shorten';
 	let btnDisabled = false;
-	let mode: 'random' | 'custom' = 'random';
+	let mode: 'random' | 'custom' = customSlug ? 'custom' : 'random';
 
 	function showLoading(show: boolean) {
 		btnLabel = show ? 'shortening...' : 'Shorten';
@@ -41,6 +42,7 @@
 		<div>
 			samu.bar/
 			<input
+				bind:value={customSlug}
 				name="customSlug"
 				required
 				pattern="[a-zA-Z0-9_-]*$"
