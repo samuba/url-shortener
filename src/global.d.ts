@@ -11,6 +11,7 @@ export type Link = {
 
 export type NewLink = {
 	url: string;
+	customSlug: string;
 	description: string;
 	userId: string;
 };

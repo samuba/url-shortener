@@ -1,4 +1,4 @@
-import { getLinkId, randomShortId } from '$lib/common';
+import { errorResponse, getLinkId, randomShortId } from '$lib/common';
 import { readKey, writeKey } from '$lib/kv';
 import type { Link, NewLink } from 'src/global';
 
@@ -6,10 +6,16 @@ export async function post(request) {
 	console.log('body', request);
 	const body = request.body as NewLink;
 	if (!body.url) {
-		return { status: 400, body: { error: 'url is required' } };
+		return errorResponse('url is required', 400);
 	}
 
-	const shortUrl = await uniqueId();
+	if (body.customSlug && (await shortUrlExists(body.customSlug))) {
+		return errorResponse('shortUrl already exists', 409);
+	}
+
+	console.warn('customSlug is', body.customSlug);
+
+	const shortUrl = body.customSlug ?? (await uniqueId());
 	const id = getLinkId(shortUrl);
 	try {
 		await writeKey(id, {
@@ -21,7 +27,7 @@ export async function post(request) {
 			createdAt: new Date()
 		} as Link);
 	} catch (error) {
-		return { status: 500, body: { error: error.message } };
+		return errorResponse(error.message, 500);
 	}
 
 	return {
@@ -30,6 +36,10 @@ export async function post(request) {
 			shortUrl
 		}
 	};
+}
+
+async function shortUrlExists(shortUrl: string) {
+	return (await readKey(getLinkId(shortUrl))) !== undefined;
 }
 
 async function uniqueId() {
