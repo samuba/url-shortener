@@ -5,11 +5,11 @@
 	export let shortUrl = '';
 	export let url = '';
 	export let customSlug = '';
+	export let mode = customSlug ? 'custom' : 'random';
 
 	$: fqdnShortUrl = `${getHost()}/${shortUrl}`;
 	let btnLabel = 'Shorten';
 	let btnDisabled = false;
-	let mode: 'random' | 'custom' = customSlug ? 'custom' : 'random';
 
 	function showLoading(show: boolean) {
 		btnLabel = show ? 'shortening...' : 'Shorten';

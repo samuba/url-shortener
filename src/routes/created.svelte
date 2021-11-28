@@ -22,32 +22,40 @@
 			headers: { 'Content-Type': 'application/json; charset=utf-8' },
 			body: JSON.stringify({ url, customSlug, description } as NewLink)
 		});
-		shortUrl = ((await res.json()) as Link).shortUrl;
 
 		if (res.status === 409) return { props: { shortUrlAlreadyExists: true, shortUrl: '' } };
 		if (!res.ok) throw new Error(`Error ${res.status} from server  ${await res.text()}`);
 
-		return { props: { shortUrl } };
+		return {
+			props: {
+				shortUrl: ((await res.json()) as Link).shortUrl
+			}
+		};
 	}
 </script>
 
 <script lang="ts">
 	import { browser } from '$app/env';
 	import CreateLink from './_createLink.svelte';
+	import { page } from '$app/stores';
 
 	export let shortUrl: string;
 	export let shortUrlAlreadyExists = false;
 
+	const url = $page.query.get('url');
+	const customSlug = $page.query.get('customSlug');
+	const mode = $page.query.get('mode');
+
 	onMount(() => {
 		if (browser && shortUrl && !location.search.includes('?shortUrl')) {
 			// to not generate a new link when users clicks on browser back
-			location.search = '?shortUrl=' + shortUrl;
+			location.search = `?shortUrl=${shortUrl}&mode=${mode}`;
 			setTimeout(() => confetti({ colors: ['#3291ff', '#0070f3'] }), 100);
 		}
 	});
 </script>
 
-<CreateLink {shortUrl} />
+<CreateLink {shortUrl} {url} {customSlug} {mode} />
 
 {#if shortUrlAlreadyExists}
 	<div><mark>Name already taken. Choose another one.</mark></div>
