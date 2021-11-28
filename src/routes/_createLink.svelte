@@ -5,7 +5,7 @@
 	export let shortUrl = '';
 
 	$: fqdnShortUrl = `${getHost()}/${shortUrl}`;
-	let url = shortUrl ? '' : 'https://www.google.com';
+	let url = '';
 	let btnLabel = 'Shorten';
 	let btnDisabled = false;
 
@@ -15,16 +15,16 @@
 	}
 </script>
 
-<form action="/created" method="get">
+<form action="/created" method="get" on:submit={() => showLoading(true)}>
 	<input
 		bind:value={url}
 		required
 		type="url"
-		placeholder="https://example.com"
+		placeholder="e.g. https://example.com"
 		pattern="http:\/\/.*|https:\/\/.*"
 		name="url"
 	/>
-	<input on:click={() => showLoading(true)} disabled={btnDisabled} value={btnLabel} type="submit" />
+	<input disabled={btnDisabled} value={btnLabel} type="submit" />
 </form>
 
 {#if shortUrl}
