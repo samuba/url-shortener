@@ -8,7 +8,7 @@
 	let url = '';
 	let btnLabel = 'Shorten';
 	let btnDisabled = false;
-	let mode = 'custom';
+	let mode: 'random' | 'custom' = 'random';
 
 	function showLoading(show: boolean) {
 		btnLabel = show ? 'shortening...' : 'Shorten';

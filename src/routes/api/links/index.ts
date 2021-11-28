@@ -3,7 +3,6 @@ import { readKey, writeKey } from '$lib/kv';
 import type { Link, NewLink } from 'src/global';
 
 export async function post(request) {
-	console.log('body', request);
 	const body = request.body as NewLink;
 	if (!body.url) {
 		return errorResponse('url is required', 400);
@@ -12,8 +11,6 @@ export async function post(request) {
 	if (body.customSlug && (await shortUrlExists(body.customSlug))) {
 		return errorResponse('shortUrl already exists', 409);
 	}
-
-	console.warn('customSlug is', body.customSlug);
 
 	const shortUrl = body.customSlug ?? (await uniqueId());
 	const id = getLinkId(shortUrl);
