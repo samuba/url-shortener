@@ -4,7 +4,7 @@
 	"scripts": {
 		"dev": "env-cmd svelte-kit dev",
 		"build": "svelte-kit build && npm run injectEnvs",
-		"preview": "svelte-kit preview",
+		"preview": "env-cmd svelte-kit preview",
 		"previewCloudflare": "npm run build && env-cmd npx wrangler@beta pages dev .svelte-kit/cloudflare/",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",

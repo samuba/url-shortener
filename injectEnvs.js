@@ -3,7 +3,6 @@ import https from 'https';
 // this is a hack and should be removed as soon as this is fixed: https://github.com/sveltejs/kit/issues/2606
 
 console.log('inject envs from server...');
-
 https
 	.get('https://kurzer-secrets.szb.workers.dev', (res) => {
 		let body = '';
@@ -25,6 +24,7 @@ https
 						filePath,
 						fs.readFileSync(filePath, 'utf8').replace(`#KV_NAMESPACE#`, envs.KV_NAMESPACE)
 					);
+					console.log('finished injecting');
 				} catch (err) {
 					console.error('error injecting envs', err);
 				}

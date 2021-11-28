@@ -11,6 +11,5 @@
 		<p>Short URLs served chilled</p>
 	</header>
 
-	<br />
 	<slot />
 </center>
