@@ -1,8 +1,6 @@
 <script context="module" lang="ts">
 	import { getHost } from '$lib/host';
-	import confetti from 'canvas-confetti';
 	import type { Link, NewLink } from 'src/global';
-	import { onMount } from 'svelte';
 
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ page, fetch }) {
@@ -38,6 +36,8 @@
 	import { browser } from '$app/env';
 	import CreateLink from './_createLink.svelte';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import confetti from 'canvas-confetti';
 
 	export let shortUrl: string;
 	export let shortUrlAlreadyExists = false;
@@ -49,8 +49,8 @@
 	onMount(() => {
 		if (browser && shortUrl && !location.search.includes('?shortUrl')) {
 			// to not generate a new link when users clicks on browser back
+			confetti({ colors: ['#3291ff', '#0070f3'] }); // TODO: why no work?
 			location.search = `?shortUrl=${shortUrl}&mode=${mode}`;
-			setTimeout(() => confetti({ colors: ['#3291ff', '#0070f3'] }), 100);
 		}
 	});
 </script>
