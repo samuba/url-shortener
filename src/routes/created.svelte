@@ -1,19 +1,16 @@
 <script context="module" lang="ts">
 	import { getHost } from '$lib/host';
+	import { paramMissing } from '$lib/common';
 	import type { Link, NewLink } from 'src/global';
+	import { navigating } from '$app/stores';
 
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ page, fetch }) {
-		// console.log('LOAD /created - page', page);
-		let shortUrl = page.query.get('shortUrl');
-		// page is not being visited for the first time
-		if (shortUrl) return { props: { shortUrl } };
-
-		const url = page.query.get('url');
+		const url = page.query.get('url') ?? paramMissing('url');
 		const customSlug = page.query.get('customSlug');
 		const description = page.query.get('description');
 
-		if (!url) throw new Error(`No URL provided`);
+		navigating.subscribe((x) => console.log({ x }));
 
 		const res = await fetch(`${getHost()}/api/links`, {
 			method: 'POST',
@@ -26,32 +23,29 @@
 
 		return {
 			props: {
-				shortUrl: ((await res.json()) as Link).shortUrl
+				shortUrl: ((await res.json()) as Link).shortUrl,
+				url,
+				customSlug
 			}
 		};
 	}
 </script>
 
 <script lang="ts">
-	import { browser } from '$app/env';
 	import CreateLink from './_createLink.svelte';
-	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import confetti from 'canvas-confetti';
 
 	export let shortUrl: string;
 	export let shortUrlAlreadyExists = false;
 
-	const url = $page.query.get('url');
-	const customSlug = $page.query.get('customSlug');
-	const mode = $page.query.get('mode');
+	export let url: string;
+	export let customSlug: string;
+	export let mode: 'custom' | 'random	';
 
 	onMount(() => {
-		if (browser && shortUrl && !location.search.includes('?shortUrl')) {
-			// to not generate a new link when users clicks on browser back
-			confetti({ colors: ['#3291ff', '#0070f3'] }); // TODO: why no work?
-			location.search = `?shortUrl=${shortUrl}&mode=${mode}`;
-		}
+		// TODO: find a way to not fire confetti & create new link on browser back. Sveltekit session? SessionCache?
+		confetti({ colors: ['#3291ff', '#0070f3'] });
 	});
 </script>
 

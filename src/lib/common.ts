@@ -18,3 +18,7 @@ export const errorResponse = (err: string | Error, status = 400) => {
 		body: err.message
 	};
 };
+
+export const paramMissing = (paramName = '') => {
+	throw new Error(`Missing parameter: ${paramName}`);
+};
